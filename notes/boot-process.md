@@ -1,8 +1,8 @@
 # Boot Process
 
-# Objective
+## Objective
 
-Understand the Linux boot process and identify PID 1 and the default target.
+Understand the Linux boot process, PID 1, and the default target.
 
 ## PID 1
 
@@ -12,18 +12,16 @@ Command:
 ps -p 1
 ```
 
-Output:ps -p 1
-    PID TTY          TIME CMD
-      1 ?        00:00:02 systemd
-
+Output:
 
 ```text
-<PASTE OUTPUT HERE>
+PID TTY          TIME CMD
+1   ?        00:00:02 systemd
 ```
 
 Observation:
 
-PID 1 is the first userspace process started by the kernel. On this system it is systemd.
+PID 1 is systemd on this Kali system.
 
 ## Default Target
 
@@ -36,21 +34,20 @@ systemctl get-default
 Output:
 
 ```text
-systemctl get-default
 graphical.target
 ```
 
 Observation:
 
-The default target determines what state the system boots into.
+The system boots into graphical mode by default.
 
 ## Observations
 
-1.
-2.
-3.
-4.
-5.
+1. The kernel starts before any userspace process.
+2. systemd is PID 1 on this machine.
+3. systemd manages services and the boot process.
+4. The default target is `graphical.target`.
+5. Targets define the system state after boot.
 
 ## Commands Used
 
@@ -59,3 +56,4 @@ ps -p 1
 systemctl get-default
 systemctl list-units --type=target
 systemd-analyze
+```
